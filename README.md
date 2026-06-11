@@ -23,8 +23,8 @@ Sistema de **gestão financeira com suporte a modo offline**, capaz de:
 |------|--------|
 | Integrante 1 | [Guilherme Augusto](https://github.com/guilhermeoliveira05) |
 | Integrante 2 | [Roberto Neto](https://github.com/neto067) |
-| Integrante 3 | [@usuario3](https://github.com/) |
-| Integrante 4 | [@usuario4](https://github.com/) |
+| Integrante 3 | [Rafael Trepichio](https://github.com/trepichiodev) |
+| Integrante 4 | [Vitor Castro](https://github.com/VitorCastro4) |
 
 ---
 
