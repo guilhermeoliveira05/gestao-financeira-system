@@ -21,8 +21,8 @@ Sistema de **gestão financeira com suporte a modo offline**, capaz de:
 
 | Nome | GitHub |
 |------|--------|
-| Integrante 1 | [@usuario1](https://github.com/) |
-| Integrante 2 | [@usuario2](https://github.com/) |
+| Integrante 1 | [Guilherme Augusto](https://github.com/guilhermeoliveira05) |
+| Integrante 2 | [Roberto Neto]([https://github.com/](https://github.com/neto067)) |
 | Integrante 3 | [@usuario3](https://github.com/) |
 | Integrante 4 | [@usuario4](https://github.com/) |
 
