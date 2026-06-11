@@ -204,10 +204,8 @@ Uma funcionalidade é considerada **concluída** quando atende todos os critéri
 
 ---
 
-## 📞 Contato
 
-Dúvidas ou sugestões: abra uma [Issue](../../issues) no repositório.
 
 ---
 
-*Disciplina de Engenharia de Software — 2025*
+
