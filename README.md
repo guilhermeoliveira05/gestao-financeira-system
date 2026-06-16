@@ -72,7 +72,7 @@ Versão evoluída com a aplicação de **5 Padrões de Projeto GoF**:
 
 | # | Padrão | Categoria | Onde foi aplicado |
 |---|--------|-----------|-------------------|
-| 1 | Factory Method | Criacional | Criação de tipos de notificação (API, local, e-mail) |
+| 1 | Singleton | Criacional | Gerenciamento centralizado da configuração do sistema |
 | 2 | Proxy | Estrutural | Controle de acesso ao serviço de sincronização online |
 | 3 | Observer | Comportamental | Monitoramento do estado de conexão (online/offline) |
 | 4 | Strategy | Comportamental | Estratégia de salvamento (online vs offline) |
@@ -148,7 +148,6 @@ chore:    tarefas auxiliares (config, dependências)
 git commit -m "feat: implementa padrão Observer para monitorar conexão"
 git commit -m "test: adiciona casos de teste para salvamento offline"
 git commit -m "docs: atualiza diagrama de classes com padrão Proxy"
-git commit -m "refactor: aplica Factory Method na criação de notificações"
 ```
 
 ---
