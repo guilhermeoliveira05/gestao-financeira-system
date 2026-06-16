@@ -3,10 +3,10 @@ package stubs;
 import model.Transacao;
 import patterns.strategy.IEstrategiaProcessamento;
 
-/*
-  STUB — IEstrategiaProcessamento
-  Registra chamadas a processar() sem lógica real.
-  Permite verificar qual estratégia foi selecionada pelo TransacaoService.
+/**
+ * STUB — IEstrategiaProcessamento
+ * Registra chamadas a processar() sem lógica real.
+ * Permite verificar qual estratégia foi selecionada pelo TransacaoService.
  */
 public class EstrategiaStub implements IEstrategiaProcessamento {
 

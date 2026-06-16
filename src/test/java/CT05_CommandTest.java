@@ -1,72 +1,65 @@
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import model.Transacao;
 import patterns.command.FilaSincronizacao;
-import patterns.command.SincronizarTransacaoCommand;
 import stubs.ComandoStub;
-import stubs.SincronizacaoStub;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-/*
-  Testes do padrão COMMAND — SincronizarTransacaoCommand + FilaSincronizacao
-  Cobre: CT-13, CT-14, CT-15
+/**
+ * Testes do padrão COMMAND — FilaSincronizacao (Invoker)
+ * Cobre: CT-13, CT-14, CT-15
  */
-@DisplayName("Command — SincronizarTransacaoCommand e FilaSincronizacao")
+@DisplayName("Command — FilaSincronizacao")
 class CT05_CommandTest {
 
-    private SincronizacaoStub sincronizacaoStub;
     private FilaSincronizacao fila;
 
     @BeforeEach
     void setUp() {
-        sincronizacaoStub = new SincronizacaoStub();
         fila = new FilaSincronizacao();
     }
 
-    // CT-13  Válido 
+    // ── CT-13 ── Válido ──────────────────────────────────────────────
     @Test
-    @DisplayName("CT-13 [V] executar() aciona o receptor com o payload correto da transação")
-    void ct13_commandAcionaReceptor() {
-        Transacao t = new Transacao("TX-013", 300.00, "PENDENTE");
-        SincronizarTransacaoCommand cmd = new SincronizarTransacaoCommand(t, sincronizacaoStub);
+    @DisplayName("CT-13 [V] Fila acumula o número correto de comandos")
+    void ct13_acumulaComandos() {
+        ComandoStub c1 = new ComandoStub();
+        ComandoStub c2 = new ComandoStub();
+        ComandoStub c3 = new ComandoStub();
 
-        cmd.executar();
+        fila.enfileirar(c1);
+        fila.enfileirar(c2);
+        fila.enfileirar(c3);
 
-        assertEquals(1, sincronizacaoStub.getChamadas(),
-                "executar() deve acionar o receptor exatamente 1 vez");
-        assertTrue(sincronizacaoStub.getUltimoPayload().contains("TX-013"),
-                "O payload enviado ao receptor deve conter o id da transação");
+        assertEquals(3, fila.tamanho(), "Fila deve conter exatamente 3 comandos");
     }
 
-    // CT-14  Alternativo 
+    // ── CT-14 ── Válido ──────────────────────────────────────────────
     @Test
-    @DisplayName("CT-14 [A] FilaSincronizacao executa todos os comandos enfileirados na ordem")
-    void ct14_filaExecutaTodosComandos() {
-        ComandoStub cmd1 = new ComandoStub();
-        ComandoStub cmd2 = new ComandoStub();
-        ComandoStub cmd3 = new ComandoStub();
+    @DisplayName("CT-14 [V] processarFila() executa todos os comandos e esvazia a fila")
+    void ct14_processaEEsvazia() {
+        ComandoStub c1 = new ComandoStub();
+        ComandoStub c2 = new ComandoStub();
 
-        fila.adicionarComando(cmd1);
-        fila.adicionarComando(cmd2);
-        fila.adicionarComando(cmd3);
-        fila.executarTodos();
+        fila.enfileirar(c1);
+        fila.enfileirar(c2);
+        fila.processarFila();
 
-        assertAll("Todos os comandos da fila devem ser executados",
-                () -> assertEquals(1, cmd1.getExecucoes(), "cmd1 deve ser executado 1 vez"),
-                () -> assertEquals(1, cmd2.getExecucoes(), "cmd2 deve ser executado 1 vez"),
-                () -> assertEquals(1, cmd3.getExecucoes(), "cmd3 deve ser executado 1 vez")
+        assertAll(
+            () -> assertEquals(1, c1.getExecucoes(), "Comando 1 deve ser executado 1 vez"),
+            () -> assertEquals(1, c2.getExecucoes(), "Comando 2 deve ser executado 1 vez"),
+            () -> assertEquals(0, fila.tamanho(),    "Fila deve estar vazia após processamento")
         );
     }
 
-    //  CT-15  Exceção 
+    // ── CT-15 ── Exceção ─────────────────────────────────────────────
     @Test
-    @DisplayName("CT-15 [E] executarTodos() com fila vazia não lança exceção")
-    void ct15_filaVaziaNaoLancaExcecao() {
-        assertDoesNotThrow(
-                () -> fila.executarTodos(),
-                "executarTodos() com fila vazia não deve lançar exceção"
-        );
+    @DisplayName("CT-15 [E] processarFila() em fila vazia não lança exceção")
+    void ct15_filaVaziaNaoExplode() {
+        assertDoesNotThrow(fila::processarFila,
+            "processarFila() em fila vazia não deve lançar exceção");
+
+        assertEquals(0, fila.tamanho(), "Tamanho deve continuar 0");
     }
 }

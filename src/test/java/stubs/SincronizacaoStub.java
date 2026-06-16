@@ -2,10 +2,10 @@ package stubs;
 
 import patterns.proxy.ISincronizacao;
 
-/*
-  STUB — ISincronizacao
-  Registra chamadas a sincronizar() sem acessar nenhum servidor real.
-  Usado nos testes do Proxy e do Command.
+/**
+ * STUB — ISincronizacao
+ * Registra chamadas a sincronizar() sem acessar nenhum servidor real.
+ * Usado nos testes do Proxy e do Command.
  */
 public class SincronizacaoStub implements ISincronizacao {
 

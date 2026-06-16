@@ -7,9 +7,9 @@ import stubs.ObservadorStub;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-/*
-  Testes do padrão OBSERVER — Conexao
-  Cobre: CT-04, CT-05, CT-06
+/**
+ * Testes do padrão OBSERVER — Conexao
+ * Cobre: CT-04, CT-05, CT-06
  */
 @DisplayName("Observer — Conexao")
 class CT02_ObserverTest {
@@ -21,7 +21,7 @@ class CT02_ObserverTest {
         conexao = new Conexao(ConexaoStatus.ONLINE);
     }
 
-    //  CT-04  Válido 
+    // ── CT-04 ── Válido ──────────────────────────────────────────────
     @Test
     @DisplayName("CT-04 [V] Observador é notificado quando status muda para OFFLINE")
     void ct04_notificaObservadorOffline() {
@@ -34,7 +34,7 @@ class CT02_ObserverTest {
         assertEquals(ConexaoStatus.OFFLINE, stub.getUltimo(), "Status recebido deve ser OFFLINE");
     }
 
-    //  CT-05  Válido 
+    // ── CT-05 ── Válido ──────────────────────────────────────────────
     @Test
     @DisplayName("CT-05 [V] Todos os observadores registrados são notificados")
     void ct05_multiplosObservadoresNotificados() {
@@ -55,7 +55,7 @@ class CT02_ObserverTest {
         );
     }
 
-    //  CT-06  Exceção 
+    // ── CT-06 ── Exceção ─────────────────────────────────────────────
     @Test
     @DisplayName("CT-06 [E] Mudar status sem observadores registrados não lança exceção")
     void ct06_semObservadoresNaoExplode() {

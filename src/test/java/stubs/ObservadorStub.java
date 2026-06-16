@@ -6,9 +6,9 @@ import patterns.observer.IObservadorConexao;
 import java.util.ArrayList;
 import java.util.List;
 
-/*
-  STUB — IObservadorConexao
-  Captura todos os status recebidos para asserção nos testes do Observer.
+/**
+ * STUB — IObservadorConexao
+ * Captura todos os status recebidos para asserção nos testes do Observer.
  */
 public class ObservadorStub implements IObservadorConexao {
 
