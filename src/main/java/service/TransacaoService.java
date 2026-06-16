@@ -11,8 +11,8 @@ import patterns.strategy.ProcessamentoOffline;
 import patterns.strategy.ProcessamentoOnline;
 
 /*
- - Regras de negócio para processamento de transações.
- - Orquestra a escolha de estratégia conforme o estado da rede e enfileira comandos de sincronização.
+ Regras de negócio para processamento de transações.
+ Orquestra a escolha de estratégia conforme o estado da rede e enfileira comandos de sincronização.
 */
 
 public class TransacaoService {
@@ -28,7 +28,7 @@ public class TransacaoService {
     }
 
     /*
-     Processa a transação escolhendo automaticamente a estratégia com base no status atual da rede.
+      Processa a transação escolhendo automaticamente a estratégia com base no status atual da rede.
     */
 
     public void processar(Transacao transacao) {
@@ -43,7 +43,7 @@ public class TransacaoService {
     }
 
     /*
-     Dispara o processamento de todos os comandos acumulados na fila.
+      Dispara o processamento de todos os comandos acumulados na fila.
     */
    
     public void sincronizarFila() {

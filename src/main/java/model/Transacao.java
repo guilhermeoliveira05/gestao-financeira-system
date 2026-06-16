@@ -1,13 +1,14 @@
 package model;
 
-import patterns.singleton.GerenciadorNotificacao;
+import patterns.singleton.ConfiguracaoSistema;
 import patterns.strategy.IEstrategiaProcessamento;
 
 import java.math.BigDecimal;
 
 /*
   Entidade central do domínio financeiro.
-  Utiliza o padrão Strategy para definir como será processada e aciona o Singleton de notificações ao salvar.
+  Utiliza o padrão Strategy para definir como será processada.
+  Ao salvar, consulta ConfiguracaoSistema (Singleton) para obter a URL da API onde o resultado será registrado.
 */
 
 public class Transacao {
@@ -18,8 +19,8 @@ public class Transacao {
     private IEstrategiaProcessamento estrategia;
 
     public Transacao(String id, BigDecimal valor) {
-        this.id = id;
-        this.valor = valor;
+        this.id     = id;
+        this.valor  = valor;
         this.status = TransacaoStatus.PENDENTE;
     }
 
@@ -34,11 +35,14 @@ public class Transacao {
         }
         estrategia.processar(this);
         this.status = TransacaoStatus.PROCESSADA;
-        GerenciadorNotificacao.getInstancia()
-                .notificar("Transação " + id + " processada. Valor: R$ " + valor);
+
+        // Consulta o Singleton para obter endpoint de registro
+        String url = ConfiguracaoSistema.getInstancia().getUrlApi();
+        System.out.println("[TRANSACAO] " + id + " registrada em: " + url
+                + " | Valor: R$ " + valor);
     }
 
-    public String getId()              { return id; }
-    public BigDecimal getValor()       { return valor; }
+    public String          getId()     { return id; }
+    public BigDecimal      getValor()  { return valor; }
     public TransacaoStatus getStatus() { return status; }
 }

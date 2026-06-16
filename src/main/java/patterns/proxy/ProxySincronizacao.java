@@ -6,9 +6,8 @@ import patterns.observer.IObservadorConexao;
 /*
  PADRÃO PROXY
  - Intercepta chamadas de sincronização e verifica o status da rede.
- - Implementa IObservadorConexao para reagir automaticamente às
- - mudanças detectadas pelo Observer (Conexao).
- */
+ - Implementa IObservadorConexao para reagir automaticamente às mudanças detectadas pelo Observer (Conexao).
+*/
 
 public class ProxySincronizacao implements ISincronizacao, IObservadorConexao {
 

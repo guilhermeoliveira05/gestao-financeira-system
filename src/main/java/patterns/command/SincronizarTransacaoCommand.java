@@ -7,7 +7,6 @@ import patterns.proxy.ISincronizacao;
  PADRÃO COMMAND — Comando concreto.
  - Encapsula uma Transacao e um receptor ISincronizacao.
  - A FilaSincronizacao (Invoker) não conhece detalhes internos.
- 
 */
 
 public class SincronizarTransacaoCommand implements IComandoSincronizacao {

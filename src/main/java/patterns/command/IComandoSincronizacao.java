@@ -1,8 +1,7 @@
 package patterns.command;
 
 /*
-  PADRÃO COMMAND — Interface do comando.
-
+ PADRÃO COMMAND — Interface do comando.
 */
 
 public interface IComandoSincronizacao {

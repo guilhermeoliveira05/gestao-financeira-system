@@ -4,8 +4,8 @@ import java.util.LinkedList;
 import java.util.List;
 
 /*
-  PADRÃO COMMAND — Invoker.
-  - Acumula comandos e os processa em lote quando solicitado.
+ PADRÃO COMMAND — Invoker.
+ - Acumula comandos e os processa em lote quando solicitado.
 */
 
 public class FilaSincronizacao {
